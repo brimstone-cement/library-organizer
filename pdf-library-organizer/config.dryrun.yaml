@@ -1,0 +1,26 @@
+# Dry-run sandbox — does not touch the live SharePoint library.
+
+library_root: "C:/Users/ericl/Desktop/Working Folder/pdf-library-dryrun"
+
+folders:
+  import: import
+  import_form: import-form
+  repository: repository
+  duplicates: duplicates
+  failed: failed
+  logs: logs
+
+crossref:
+  # Real mailbox for CrossRef polite pool
+  mailto: "ericliu@brimstone.com"
+  timeout_seconds: 30
+  max_retries: 3
+
+# Freshly copied PDFs should not be skipped during dry-run
+settle_seconds: 0
+
+naming:
+  n_title_words: 6
+  name_spacer: "_"
+  title_spacer: "-"
+  max_filename_length: 150

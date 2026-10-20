@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-organizer"
+version = "0.1.0"
+description = "Rename and file PDFs into a SharePoint-synced library using CrossRef and PDF metadata"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.27",
+  "pydantic>=2.6",
+  "pypdf>=4.0",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "respx>=0.21"]
+
+[project.scripts]
+pdf-process-import = "pdf_organizer.process_import:main"
+pdf-process-form = "pdf_organizer.process_form:main"
+pdf-form-submit = "pdf_organizer.form_submit:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

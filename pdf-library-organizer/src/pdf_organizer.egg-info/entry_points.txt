@@ -1,0 +1,4 @@
+[console_scripts]
+pdf-form-submit = pdf_organizer.form_submit:main
+pdf-process-form = pdf_organizer.process_form:main
+pdf-process-import = pdf_organizer.process_import:main
