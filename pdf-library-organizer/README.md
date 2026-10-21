@@ -1,20 +1,22 @@
 # Script 1 — PDF library organizer
 
-**Canonical project path:** `C:\Users\ericl\Desktop\Working Folder\pdf-library-organizer`  
-(Do not use a second copy under `C:\Users\ericl\pdf-library-organizer` — keep one tree.)
+**Canonical project path:** `C:\Users\ericl\Desktop\Github Repos\Brimstone\library-organizer\pdf-library-organizer`  
+(The Git repo root is the parent `library-organizer` folder; the project, `config.yaml` and `pyproject.toml` live in this inner folder. Run all commands from here. Do not keep a second copy elsewhere, such as the old `Working Folder` location.)
 
 Rename and move PDFs from a SharePoint-synced `import/` folder into `repository/` using CrossRef (via DOI) and PDF metadata.
 
 ## Setup
 
 ```powershell
-cd "C:\Users\ericl\Desktop\Working Folder\pdf-library-organizer"
+cd "C:\Users\ericl\Desktop\Github Repos\Brimstone\library-organizer\pdf-library-organizer"
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -e ".[dev]"
 copy config.example.yaml config.yaml
 # Edit config.yaml: set library_root and a real crossref.mailto (not @example.com)
 ```
+
+`.venv/` and `config.yaml` are git-ignored, so repeat this setup after every fresh clone or if the project folder is moved (the editable install records the folder path).
 
 Create these folders under `library_root` (Script 1 also creates them on run):
 
@@ -61,10 +63,10 @@ Placeholders: `NoYear`, `NoAuthor`, `NoTitle`, `NoPatent`, `NoCompany`.
 
 ## Task Scheduler
 
-Use `python` (not `pythonw`) and redirect output:
+Use the project's venv `python.exe` (not `pythonw`, and not a system Python that lacks the package) and redirect output. Set the task's "Start in" folder to the project folder:
 
 ```powershell
-python -m pdf_organizer.process_import --config "C:\Users\ericl\Desktop\Working Folder\pdf-library-organizer\config.yaml" >> "C:\Users\ericl\Brimstone Energy\Library - Documents\R&D\logs\job_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log" 2>&1
+"C:\Users\ericl\Desktop\Github Repos\Brimstone\library-organizer\pdf-library-organizer\.venv\Scripts\python.exe" -m pdf_organizer.process_import --config "C:\Users\ericl\Desktop\Github Repos\Brimstone\library-organizer\pdf-library-organizer\config.yaml" >> "C:\Users\ericl\Brimstone Energy\Library - Documents\R&D\logs\job_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log" 2>&1
 ```
 
 ## Tests

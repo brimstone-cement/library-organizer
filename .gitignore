@@ -1,0 +1,12 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python build / cache artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local machine config (copy config.example.yaml to config.yaml)
+config.yaml
