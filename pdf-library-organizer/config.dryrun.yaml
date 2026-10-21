@@ -1,6 +1,6 @@
 # Dry-run sandbox — does not touch the live SharePoint library.
 
-library_root: "C:/Users/ericl/Desktop/Working Folder/pdf-library-dryrun"
+library_root: "C:/Users/ericl/Desktop/Github Repos/Brimstone/library-organizer/pdf-library-organizer/pdf-library-dryrun"
 
 folders:
   import: import
